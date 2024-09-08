@@ -1,0 +1,105 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+  background-color: #FFFFCC;
+  color: #000080;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #000080;
+  color: #FFFFFF;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex-grow: 1;
+  background-color: #FFFFFF;
+  border-left: 2px solid #000080;
+  border-right: 2px solid #000080;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-container {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 2px solid #000080;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #da1620;
+  font-size: 32px;
+}
+
+h2 {
+  color: #201d1d;
+  font-size: 26px;
+}
+
+h3 {
+  color: #000000;
+  font-size: 22px;
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+.counter {
+  font-size: 16px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Add some "Web 2.0" flair */
+/* h1 {
+  text-shadow: 2px 2px #111110;
+} */
+
+/* .profile-pic {
+  box-shadow: 5px 5px 5px #888888;
+} */
