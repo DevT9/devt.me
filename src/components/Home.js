@@ -3,7 +3,7 @@ import React from 'react';
 const SectionContent = ({ title, content, imageContainer }) => (
   <div className="section-content flex flex-row justify-between items-start">
     <div className="text-content flex-grow">
-      <h2 className="section-title">{title}</h2>
+      <h2 className="section-title font-oranienbaum">{title}</h2>
       <p className="section-text">{content}</p>
     </div>
     {imageContainer}
@@ -59,15 +59,20 @@ const Home = () => {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <span className="text-lg mr-2">⚡</span>
-                  <span className="text-lg">EVs </span>
+                  <span className="text-lg">I want to build tech that actually makes a difference in people's lives. There's something special about creating products that anyone can pick up and use, solving everyday problems in clever ways. I want to work on things that people use naturally as part of their daily routines.
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-lg mr-2">⚡</span>
-                  <span className="text-lg">Previous internship experience at Harbinger Motors and ZF in the automotive sector</span>
+                  <span className="text-lg">I'm really excited by how computer vision is evolving and how it could lead to smarter, more intuitive ways for people to interact with technology. </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-lg mr-2">⚡</span>
-                  <span className="text-lg">Actively seeking full-time SDE roles starting December 2024</span>
+                  <span className="text-lg">The automotive industry is another area that fascinates me, especially as cars become more high-tech and change how we think about transportation. </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">I'm drawn to startups because they give me the chance to work on meaningful products and innovate quickly.</span>
                 </li>
               </ul>
             </div>
@@ -78,7 +83,36 @@ const Home = () => {
       <Section className="non-professional-interests-section">
         <SectionContent
           title="Non-Professional Interests"
-          content="Your non-professional interests content here..."
+          content={
+            <div>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Sneakers</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Table Tennis</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Football (both kinds)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Baking</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Film Photography</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-lg mr-2">⚡</span>
+                  <span className="text-lg">Basketball</span>
+                </li>
+              </ul>
+            </div>
+          }
         />
       </Section>
 

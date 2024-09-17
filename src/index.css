@@ -3,8 +3,22 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'Alegreya';
+  src: url('../src/fonts/Alegreya-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oranienbaum';
+  src: url('../src/fonts/Oranienbaum.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  @apply bg-black text-white bg-grid-pattern bg-grid font-rota; /* Removed text-xl */
+  @apply bg-black text-white bg-grid-pattern bg-grid font-sans; /* Changed font-rota to font-sans */
 }
 
 .layout {
@@ -34,7 +48,7 @@ body {
 }
 
 .section {
-  @apply text-3xl cursor-pointer transition-colors duration-300 ease-in-out font-custom; /* Changed to text-3xl */
+  @apply text-3xl cursor-pointer transition-colors duration-300 ease-in-out font-oranienbaum; /* Changed font-custom to font-oranienbaum */
   line-height: 1; /* Set line height to 1 for better alignment */
   display: flex; /* Use flex to align items */
   align-items: flex-end; /* Align to the bottom */
@@ -57,14 +71,14 @@ body {
 
 /* Use Oranienbaum for projects, contacts, and blog buttons */
 .projects-button, .contact-button, .blog-button {
-  @apply font-custom;
+  @apply font-oranienbaum;
 }
 
-/* Use Rota for the Contact Me button */
+/* Use Alegreya for the Contact Me button */
 .contact-me-button {
   @apply mt-8 bg-black text-white border border-white rounded-full;
   @apply hover:bg-white hover:text-black transition-all duration-300;
-  @apply text-xl font-custom;
+  @apply text-xl font-sans;
   @apply flex items-center justify-center;
   @apply w-full; /* Make it full width like other contact method buttons */
   @apply p-4; /* Match padding with other contact method buttons */
@@ -72,7 +86,7 @@ body {
 
 /* Use Oranienbaum for navigation buttons */
 .nav-button {
-  @apply font-custom;
+  @apply font-oranienbaum;
 }
 
 /* New styles for projects grid */
@@ -121,7 +135,7 @@ body {
 }
 
 .project-title {
-  @apply text-2xl font-bold mb-4 font-custom;
+  @apply text-2xl font-bold mb-4 font-oranienbaum;
 }
 
 .project-description {
@@ -180,7 +194,7 @@ body {
 }
 
 .contact-title {
-  @apply text-4xl font-bold mb-6 font-custom;
+  @apply text-4xl font-bold mb-6 font-oranienbaum;
 }
 
 .contact-description {
@@ -248,7 +262,7 @@ body {
 }
 
 .modal-title {
-  @apply text-2xl font-bold mb-6 text-white font-custom;
+  @apply text-2xl font-bold mb-6 text-white font-oranienbaum;
 }
 
 .contact-form {
@@ -263,7 +277,7 @@ body {
 .submit-button {
   @apply bg-white text-black px-6 py-2 rounded-full border border-black;
   /* @apply hover:bg-gray-200 transition-colors duration-300; */
-  @apply font-custom text-lg;
+  @apply font-oranienbaum text-lg;
 }
 
 .submit-button:hover {
@@ -315,8 +329,7 @@ body {
 }
 
 .blog-title {
-  @apply text-base font-bold font-custom; /* Reduced font size */
-  @apply text-4xl font-bold font-custom; /* Increased font size to text-xl */
+  @apply text-4xl font-bold font-oranienbaum; /* Increased font size to text-xl */
 }
 
 .blog-date {
@@ -361,11 +374,11 @@ body {
 }
 
 .blog-post-title {
-  @apply text-5xl font-bold mb-4 text-center font-custom;
+  @apply text-5xl font-bold mb-4 text-center font-oranienbaum;
 }
 
 .blog-post-date {
-  @apply text-2xl mb-8 text-center font-custom;
+  @apply text-2xl mb-8 text-center font-oranienbaum;
 }
 
 .blog-post-content {
@@ -407,7 +420,7 @@ body {
 }
 
 .section-title {
-  @apply text-4xl font-bold mb-6 font-custom;
+  @apply text-4xl font-bold mb-6 font-oranienbaum;
 }
 
 .section-text {
@@ -454,7 +467,7 @@ body {
 /* Visitor Info styles */
 .visitor-info {
   @apply fixed bottom-4 right-4 bg-black text-white p-4 rounded-lg shadow-lg;
-  @apply text-sm font-custom;
+  @apply text-sm font-sans;
   @apply flex flex-col items-end;
   @apply border-2 border-white; /* Add white outline */
   z-index: 1000;

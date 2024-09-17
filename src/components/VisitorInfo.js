@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const VisitorInfo = () => {
   const [visitorCount, setVisitorCount] = useState(null);
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
@@ -10,7 +9,6 @@ const VisitorInfo = () => {
       try {
         // Check if this is the first visit
         const firstVisit = !localStorage.getItem('hasVisited');
-        setIsFirstVisit(firstVisit);
         
         // Check if we have a stored count
         const storedCount = localStorage.getItem('visitorCount');

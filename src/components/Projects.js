@@ -2,49 +2,22 @@ import React from 'react';
 
 const projectsData = [
   {
-    title: "Project 1",
-    description: "A brief description of project 1. This is a placeholder for the actual project details.",
-    tech: "React, TypeScript, Tailwind CSS"
+    title: "Clipper",
+    description: "Automated customizable Highlights Creator for Basketball Games",
+    tech: "React, Tailwind CSS, FastAPI, AWS Amplify, S3, Lambda, EasyOCR, Llama 3-8B, OpenAI Whisper, Python, Docker",
+    link: "https://github.com/PiAreSquared/Open-Source-Software-Senior-Design-Project.git"
   },
   {
-    title: "Project 2",
-    description: "Description for project 2. Replace this with the actual project information.",
-    tech: "Node.js, Express, MongoDB"
+    title: "npm replica",
+    description: "Development of REST API/Full Stack Web App that mimics the npm registry",
+    tech: "Node.js, Express, MongoDB, Typescript, AWS CodePipeline, S3, EC2, Lambda",
+    link: "https://github.com/DevT9/ECE461_Team11.git"
   },
   {
-    title: "Project 3",
-    description: "Project 3 description. Update this with real project details when available.",
-    tech: "Python, Django, PostgreSQL"
-  },
-  {
-    title: "Project 4",
-    description: "Placeholder for project 4 description. Fill in with actual project information.",
-    tech: "Vue.js, Vuex, Firebase"
-  },
-  {
-    title: "Project 5",
-    description: "Project 5 details go here. Replace with the actual project description.",
-    tech: "React Native, GraphQL, AWS"
-  },
-  {
-    title: "Project 6",
-    description: "Description for project 6. Update this with the real project information when ready.",
-    tech: "Angular, RxJS, NestJS"
-  },
-  {
-    title: "Project 7",
-    description: "A placeholder for project 7. This will showcase your skills in machine learning.",
-    tech: "Python, TensorFlow, Scikit-learn"
-  },
-  {
-    title: "Project 8",
-    description: "Project 8 is a mobile app. Replace this with the actual app description.",
-    tech: "Flutter, Dart, Firebase"
-  },
-  {
-    title: "Project 9",
-    description: "Placeholder for project 9. This could be a web scraping project.",
-    tech: "Python, BeautifulSoup, Pandas"
+    title: "JOS Operating System",
+    description: "Implementation of xv6 operating system based on MIT 6.828",
+    tech: "C, x86 Assembly",
+    link: "#" // Replace with actual link when available
   }
 ];
 
@@ -54,7 +27,7 @@ const Projects = () => {
       <div className="projects-grid">
         {projectsData.map((project, index) => (
           <a 
-            href="https://github.com/DevT9" 
+            href={project.link} 
             target="_blank" 
             rel="noopener noreferrer" 
             key={index} 

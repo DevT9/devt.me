@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -6,9 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        custom: ['oranienbaum', 'sans-serif'],
-        body: ['rota', 'sans-serif'],
-        'rota': ['Rota Regular', 'sans-serif'], // Add Rota Regular font
+        'sans': ['Alegreya', ...defaultTheme.fontFamily.sans],
+        'oranienbaum': ['Oranienbaum', ...defaultTheme.fontFamily.serif],
       },
       backgroundImage: {
         'grid-pattern': "linear-gradient(to right, #333333 1px, transparent 1px), linear-gradient(to bottom, #333333 1px, transparent 1px)",
