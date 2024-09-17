@@ -1,13 +1,545 @@
+@import './fonts.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-black text-white bg-grid-pattern bg-grid font-rota; /* Removed text-xl */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.layout {
+  @apply p-0; /* Remove padding */
 }
+
+.header {
+  @apply flex items-end space-x-8 mb-8; /* Changed to items-end */
+  @apply mt-8; /* Add top margin */
+}
+
+.name {
+  @apply text-7xl font-bold transition-colors duration-300 ease-in-out;
+  @apply ml-6; /* Add left margin */
+  line-height: 0.8; /* Adjust line height for better alignment */
+  display: flex; /* Use flex to align items */
+  align-items: flex-end; /* Align to the bottom */
+  margin-bottom: 0; /* Ensure no margin affects alignment */
+}
+
+.name:hover {
+  @apply text-[#ceb888];
+}
+
+.sections {
+  @apply flex space-x-8 items-end; /* Added items-end */
+}
+
+.section {
+  @apply text-3xl cursor-pointer transition-colors duration-300 ease-in-out font-custom; /* Changed to text-3xl */
+  line-height: 1; /* Set line height to 1 for better alignment */
+  display: flex; /* Use flex to align items */
+  align-items: flex-end; /* Align to the bottom */
+  margin-bottom: 0; /* Ensure no margin affects alignment */
+}
+
+.section:hover {
+  @apply text-[#ceb888];
+}
+
+.content {
+  @apply w-full;
+  @apply mt-8 text-xl; /* Changed to text-xl */
+}
+
+/* Remove the general button style to allow specific styling */
+/* button {
+  font-family: inherit;
+} */
+
+/* Use Oranienbaum for projects, contacts, and blog buttons */
+.projects-button, .contact-button, .blog-button {
+  @apply font-custom;
+}
+
+/* Use Rota for the Contact Me button */
+.contact-me-button {
+  @apply mt-8 bg-black text-white border border-white rounded-full;
+  @apply hover:bg-white hover:text-black transition-all duration-300;
+  @apply text-xl font-custom;
+  @apply flex items-center justify-center;
+  @apply w-full; /* Make it full width like other contact method buttons */
+  @apply p-4; /* Match padding with other contact method buttons */
+}
+
+/* Use Oranienbaum for navigation buttons */
+.nav-button {
+  @apply font-custom;
+}
+
+/* New styles for projects grid */
+
+.projects-container {
+  @apply flex flex-col items-center; /* Center align content vertically and horizontally */
+  @apply w-full; /* Full width container */
+  @apply py-8; /* Add some vertical padding */
+}
+
+.projects-grid {
+  @apply flex flex-col items-center space-y-8; /* Center align and add vertical space between cards */
+  @apply w-3/4; /* Make the grid take up 3/4 of the container width */
+}
+
+.project-card {
+  @apply bg-black text-white p-8 transition-all duration-300 ease-in-out;
+  @apply border border-white;
+  @apply w-full;
+  @apply min-h-[200px];
+  @apply flex justify-between;
+  @apply cursor-pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.project-card:hover {
+  @apply bg-white text-black;
+  @apply border-black;
+}
+
+.project-content {
+  @apply flex-grow pr-8; /* Add right padding to make space for the arrow */
+}
+
+.project-arrow {
+  @apply text-3xl absolute right-4; /* Changed positioning */
+  @apply transition-all duration-300 ease-in-out;
+  top: 50%; /* Position vertically in the middle */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+}
+
+.project-card:hover .project-arrow {
+  @apply text-black;
+  transform: translateY(-50%) translateX(5px); /* Keep vertical centering while moving right */
+}
+
+.project-title {
+  @apply text-2xl font-bold mb-4 font-custom;
+}
+
+.project-description {
+  @apply mb-6;
+}
+
+.project-tech {
+  @apply mt-4;
+}
+
+.tech-label {
+  @apply text-xl font-bold mr-2;
+}
+
+.tech-list {
+  @apply text-xl;
+  @apply inline;
+}
+
+/* Remove any conflicting hover styles if they exist */
+.project-card:hover .project-title,
+.project-card:hover .project-description,
+.project-card:hover .tech-label,
+.project-card:hover .tech-list,
+.project-card:hover .project-arrow {
+  @apply text-black;
+}
+
+.tech-item {
+  @apply text-white text-sm mr-4 mb-2;
+  @apply relative;
+}
+
+.tech-item::after {
+  content: '';
+  @apply absolute -bottom-1 left-0 w-full h-px bg-white scale-x-0 transition-transform duration-300;
+}
+
+.tech-item:hover::after {
+  @apply scale-x-100;
+}
+
+.tech-tag {
+  @apply px-2 py-1 text-xs font-semibold rounded-full bg-gray-800 text-white;
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+.tech-tag:hover {
+  @apply bg-gray-700;
+}
+
+/* Contact page styles */
+.contact-container {
+  @apply flex flex-col items-center justify-center min-h-[calc(100vh-200px)];
+  @apply w-full max-w-2xl mx-auto px-4;
+}
+
+.contact-title {
+  @apply text-4xl font-bold mb-6 font-custom;
+}
+
+.contact-description {
+  @apply text-xl mb-8 text-center;
+}
+
+.contact-methods {
+  @apply w-full space-y-4;
+}
+
+.contact-method {
+  @apply flex justify-between items-center p-4 bg-black border border-white rounded-full transition-all duration-300;
+  @apply hover:bg-white hover:text-black;
+}
+
+.contact-link {
+  @apply flex items-center space-x-4 flex-grow justify-center; /* Added justify-center */
+  @apply text-xl; /* Increased font size */
+}
+
+.method-value {
+  @apply text-center text-xl; /* Changed to text-center and increased font size */
+}
+
+.copy-button {
+  @apply ml-4 p-2 rounded-full bg-black text-white border border-white transition-all duration-300;
+  @apply hover:bg-white hover:text-black;
+  @apply flex items-center justify-center;
+  @apply w-14 h-14;
+  @apply text-2xl;
+  @apply focus:outline-none focus:ring-0; /* Remove focus ring */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.copy-button:focus-visible {
+  @apply outline-none ring-0;
+}
+
+.tick-mark {
+  @apply text-white transition-colors duration-300;
+}
+
+.copy-button:hover .tick-mark {
+  @apply text-black;
+}
+
+/* Remove the .copied-text class as it's no longer needed */
+
+/* Add this new style for the tick mark */
+.copy-button .text-green-500 {
+  @apply transition-all duration-300;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-content {
+  @apply bg-black border border-white p-8 rounded-lg relative;
+  @apply w-full max-w-md;
+}
+
+.modal-close {
+  @apply absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300;
+}
+
+.modal-title {
+  @apply text-2xl font-bold mb-6 text-white font-custom;
+}
+
+.contact-form {
+  @apply flex flex-col space-y-4;
+}
+
+.form-input {
+  @apply bg-black border border-white text-white px-4 py-2 rounded;
+  @apply focus:outline-none focus:ring-2 focus:ring-white;
+}
+
+.submit-button {
+  @apply bg-white text-black px-6 py-2 rounded-full border border-black;
+  /* @apply hover:bg-gray-200 transition-colors duration-300; */
+  @apply font-custom text-lg;
+}
+
+.submit-button:hover {
+  @apply bg-black text-white;
+  @apply border-white;
+}
+
+
+/* Blog styles */
+.blog-container {
+  @apply flex flex-col items-center;
+  @apply w-full;
+  @apply py-8;
+}
+
+.blog-grid {
+  @apply flex flex-col items-center space-y-8;
+  @apply w-3/4; /* Restore the original width */
+}
+
+.blog-card {
+  @apply bg-black text-white transition-all duration-300 ease-in-out;
+  @apply border border-white;
+  @apply w-full;
+  @apply flex;
+  @apply cursor-pointer;
+  text-decoration: none;
+  position: relative;
+  height: 250px; /* Set the height to 100 pixels */
+}
+
+.blog-card:hover {
+  @apply bg-white text-black;
+  @apply border-black;
+}
+
+.blog-image {
+  @apply w-1/5; /* Adjust image width */
+  @apply h-full; /* Make image full height of the card */
+}
+
+.blog-thumbnail {
+  @apply w-full h-full object-cover;
+}
+
+.blog-content {
+  @apply flex-grow p-2; /* Reduced padding to fit content */
+  @apply flex flex-col justify-between;
+}
+
+.blog-title {
+  @apply text-base font-bold font-custom; /* Reduced font size */
+  @apply text-4xl font-bold font-custom; /* Increased font size to text-xl */
+}
+
+.blog-date {
+  @apply text-xl; /* Keep small font size for date */
+}
+
+.blog-description {
+  @apply text-xl overflow-hidden; /* Reduced font size */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+}
+
+.blog-arrow {
+  @apply text-3xl absolute right-4;
+  @apply transition-all duration-300 ease-in-out;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.blog-card:hover .blog-arrow {
+  @apply text-black;
+  transform: translateY(-50%) translateX(5px);
+}
+
+/* Ensure all text elements change color on hover */
+.blog-card:hover .blog-title,
+.blog-card:hover .blog-date,
+.blog-card:hover .blog-description,
+.blog-card:hover .blog-arrow {
+  @apply text-black;
+}
+
+/* Blog Post styles */
+.blog-post-container {
+  @apply flex flex-col items-center w-full max-w-4xl mx-auto px-4 py-8;
+  position: relative; /* Add this line */
+}
+
+.blog-post-back-link {
+  @apply absolute left-4 top-4 text-white hover:text-gray-300 transition-colors duration-300;
+}
+
+.blog-post-title {
+  @apply text-5xl font-bold mb-4 text-center font-custom;
+}
+
+.blog-post-date {
+  @apply text-2xl mb-8 text-center font-custom;
+}
+
+.blog-post-content {
+  @apply bg-black text-white p-8 w-full;
+}
+
+.blog-post-paragraph {
+  @apply mb-6 text-lg;
+}
+
+.blog-post-image {
+  @apply w-full max-w-2xl mx-auto my-8;
+}
+
+/* Home page styles */
+.home-container {
+  @apply w-full;
+}
+
+
+/* Common styles for section containers */
+.section-container {
+  @apply w-full max-w-6xl mx-auto mb-12 px-8;
+}
+
+.section-wrapper {
+  @apply bg-black text-white p-8 border border-white;
+  /* Remove min-height to allow dynamic sizing */
+}
+
+.section-content {
+  @apply w-full;
+  @apply flex flex-col md:flex-row; /* Use flex layout */
+}
+
+.text-content {
+  @apply flex-grow pr-8;
+  @apply text-3xl;
+}
+
+.section-title {
+  @apply text-4xl font-bold mb-6 font-custom;
+}
+
+.section-text {
+  @apply text-lg mb-4;
+  /* Remove overflow-y-auto and max-height */
+}
+
+.about-image-container {
+  @apply w-full md:w-1/3 flex items-center justify-center mt-8 md:mt-0;
+}
+
+.about-image {
+  @apply w-full h-auto rounded-lg shadow-lg;
+}
+
+.image-placeholder {
+  @apply w-full h-full bg-gray-700 object-cover;
+}
+
+/* Specific background colors */
+/* .interests-section .section-wrapper {
+  @apply bg-black;
+  @apply text-black;
+  @apply border-gray-700;
+}
+
+.non-professional-interests-section .section-wrapper {
+  @apply bg-black;
+} */
+
+/* Remove arrow styles */
+.project-arrow,
+.blog-arrow,
+.section-arrow {
+  display: -webkit-box; 
+}
+
+
+/* Add spacing to containers */
+.container {
+  @apply px-8; /* Add horizontal padding */
+}
+
+/* Visitor Info styles */
+.visitor-info {
+  @apply fixed bottom-4 right-4 bg-black text-white p-4 rounded-lg shadow-lg;
+  @apply text-sm font-custom;
+  @apply flex flex-col items-end;
+  @apply border-2 border-white; /* Add white outline */
+  z-index: 1000;
+}
+
+
+.visitor-info > div {
+  @apply mb-1;
+}
+
+.welcome-message {
+  @apply bg-white text-black px-3 py-1 rounded-full mb-2;
+  @apply text-sm font-bold;
+  @apply animate-fade-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 5s ease-in-out;
+}
+
+/* Restore arrow styles for blog and project cards */
+.blog-arrow,
+.project-arrow {
+  @apply text-3xl absolute right-4;
+  @apply transition-all duration-300 ease-in-out;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.blog-card:hover .blog-arrow,
+.project-card:hover .project-arrow {
+  @apply text-black;
+  transform: translateY(-50%) translateX(5px);
+}
+
+/* Social Links styles */
+.social-links-container {
+  @apply flex justify-center space-x-6 mt-12 mb-8;
+}
+
+.social-link {
+  @apply w-12 h-12 flex items-center justify-center rounded-full;
+  @apply bg-white text-black;
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:bg-black hover:text-white hover:border-2 hover:border-white;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+}
+
+.social-link i {
+  @apply text-2xl;
+}
+
+.social-link svg {
+  @apply w-5 h-5;
+}
+
+.github:hover {
+  @apply bg-[#333] text-white;
+}
+
+.linkedin:hover {
+  @apply bg-[#0077B5] text-white;
+}
+
+.x-twitter:hover {
+  @apply bg-black text-white;
+}
+
+.email:hover {
+  @apply bg-black text-white;
+}
+
+.section-text ul {
+  @apply list-disc list-inside space-y-2;
+}
+
+.section-text li {
+  @apply text-xl;
+}
+

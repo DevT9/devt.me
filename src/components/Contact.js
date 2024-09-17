@@ -1,48 +1,103 @@
 import React, { useState } from 'react';
-import './Contact.css'; // We'll create this file for styling
+import { FaEnvelope, FaLinkedin, FaGithub, FaCheck, FaTimes } from 'react-icons/fa';
+import { MdContentCopy } from 'react-icons/md'; // Import a different copy icon
 
-function Contact() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const ContactMethod = ({ icon, value, link }) => {
+  const [copied, setCopied] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>
-        Email: <a href="mailto:duthakka@purdue.edu">duthakka@purdue.edu</a>
-      </p>
-      <p>
-        LinkedIn: <a href="https://www.linkedin.com/in/devthak" target="_blank" rel="noopener noreferrer">linkedin.com/in/devthak</a>
-      </p>
-      <p>
-        GitHub: <a href="https://github.com/DevT9" target="_blank" rel="noopener noreferrer">github.com/DevT9</a>
-      </p>
-      <button onClick={openModal} className="contact-button">Contact Me</button>
-      
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <button onClick={closeModal} className="close-button">&times;</button>
-            <h3>Contact Form</h3>
-            <form>
-              <label htmlFor="name">Name:</label>
-              <input type="text" id="name" name="name" required />
-
-              <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" required />
-
-              <label htmlFor="message">Message:</label>
-              <textarea id="message" name="message" required></textarea>
-
-              <button type="submit" className="send-button">Send</button>
-            </form>
-          </div>
-        </div>
-      )}
-    </section>
+    <div className="contact-method">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="contact-link">
+        {React.cloneElement(icon, { size: "1.5em" })} {/* Adjusted icon size */}
+        <span className="method-value">{value}</span>
+      </a>
+      <button onClick={copyToClipboard} className="copy-button" aria-label="Copy to clipboard">
+        {copied ? <FaCheck size="1.2em" className="tick-mark" /> : <MdContentCopy size="1.2em" />}
+      </button>
+    </div>
   );
-}
+};
+
+const ContactModal = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the email and message to your backend
+    console.log('Submitted:', { email, message });
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button onClick={onClose} className="modal-close">
+          <FaTimes />
+        </button>
+        <h3 className="modal-title">Drop a Message</h3>
+        <form onSubmit={handleSubmit} className="contact-form">
+          <input
+            type="email"
+            placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="form-input"
+          />
+          <textarea
+            placeholder="Your Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+            className="form-input"
+          ></textarea>
+          <button type="submit" className="submit-button">Send</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+const Contact = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <div className="contact-container">
+      <h2 className="contact-title">Get in Touch</h2>
+      <p className="contact-description">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+      <div className="contact-methods">
+        <ContactMethod 
+          icon={<FaEnvelope />}
+          value="your.email@example.com"
+          link="mailto:your.email@example.com"
+        />
+        <ContactMethod 
+          icon={<FaLinkedin />}
+          value="linkedin.com/in/yourprofile"
+          link="https://linkedin.com/in/yourprofile"
+        />
+        <ContactMethod 
+          icon={<FaGithub />}
+          value="github.com/yourusername"
+          link="https://github.com/yourusername"
+        />
+      </div>
+      <button onClick={() => setIsModalOpen(true)} className="contact-me-button">
+        Contact Me
+      </button>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </div>
+  );
+};
 
 export default Contact;
