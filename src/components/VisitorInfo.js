@@ -1,49 +1,49 @@
 import React, { useState, useEffect } from 'react';
 
 const VisitorInfo = () => {
-  const [visitorCount, setVisitorCount] = useState(null);
+  const [visitorCount, setVisitorCount] = useState(() => {
+    const storedCount = localStorage.getItem('visitorCount');
+    return storedCount ? parseInt(storedCount, 10) : null;
+  });
   const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
-    const fetchVisitorCount = async () => {
+    const fetchVisitorCount = async (method) => {
       try {
-        // Check if this is the first visit
-        const firstVisit = !localStorage.getItem('hasVisited');
-        
-        // Check if we have a stored count
-        const storedCount = localStorage.getItem('visitorCount');
+        const response = await fetch('https://n3l3m29y2l.execute-api.us-east-1.amazonaws.com/prod/visitor-count', {
+          method: method,
+        });
+        const data = await response.json();
 
-        if (!firstVisit && storedCount) {
-          // If it's not the first visit and we have a stored count, use that
-          setVisitorCount(parseInt(storedCount, 10));
+        if (data && data.count) {
+          setVisitorCount(data.count);
+          localStorage.setItem('visitorCount', data.count.toString());
         } else {
-          // Otherwise, fetch from the API
-          const response = await fetch('https://n3l3m29y2l.execute-api.us-east-1.amazonaws.com/prod/visitor-count', {
-            method: 'GET',
-          });
-          const data = await response.json();
-
-          if (data && data.count) {
-            setVisitorCount(data.count);
-            
-            // Store the count and set the visited flag
-            localStorage.setItem('visitorCount', data.count.toString());
-            localStorage.setItem('hasVisited', 'true');
-
-            if (firstVisit) {
-              setShowWelcome(true);
-              setTimeout(() => setShowWelcome(false), 5000); // Hide welcome message after 5 seconds
-            }
-          } else {
-            console.error('Unexpected response format:', data);
-          }
+          console.error('Unexpected response format:', data);
         }
       } catch (error) {
         console.error('Error fetching visitor count:', error);
       }
     };
 
-    fetchVisitorCount();
+    const initVisitorCount = async () => {
+      const hasVisited = localStorage.getItem('hasVisited');
+
+      if (!hasVisited) {
+        await fetchVisitorCount('POST');
+        localStorage.setItem('hasVisited', 'true');
+        setShowWelcome(true);
+        setTimeout(() => setShowWelcome(false), 5000);
+      } else {
+        await fetchVisitorCount('GET');
+      }
+    };
+
+    initVisitorCount();
+
+    // Set up periodic GET requests
+    const intervalId = setInterval(() => fetchVisitorCount('GET'), 60000);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
