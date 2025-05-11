@@ -1,1 +1,19 @@
+/* Add to existing CSS */
+.resume-container {
+  padding: 2rem;
+  height: 100vh;
+}
 
+.resume-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.resume-button:hover {
+  background-color: #0056b3;
+}

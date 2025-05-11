@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 // import Blog from './components/Blog';
 import VisitorInfo from './components/VisitorInfo';
 import GridAnimation from './components/GridAnimation';
+import Resume from './components/Resume';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
             {/* <Route path="/blog" element={<Blog />} /> */}
           </Routes>
